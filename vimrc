@@ -1,3 +1,7 @@
+" Initializing pathogen for bundling other plugins
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 set nocompatible
 syntax enable
 filetype plugin indent on
@@ -51,7 +55,6 @@ map <F3> :FufBuffer <CR>
 map <F4> :FufFile <CR>
 map <F5> :FufCoverageFile <CR>
 map <F6> :FufBookmarkDir <CR>
-map <F7> :execute "Ack /" . expand("<cword>") . "/ " <Bar> cw<CR>
 
 nnoremap <F8> :TlistToggle <CR>
 
