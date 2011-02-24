@@ -12,6 +12,6 @@ Switch to the `~/.vim` directory, and fetch submodules:
     git submodule init
     git submodule update
 
-		OR 
+    OR 
 		
-		git submodule update --init
+    git submodule update --init
