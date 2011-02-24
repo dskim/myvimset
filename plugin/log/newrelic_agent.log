@@ -1,0 +1,6 @@
+# Logfile created on 2011-02-17 09:00:57 +1030 by logger.rb/20321
+[02/17/11 09:00:57 +1030 dkim-macbook (14726)] INFO : Dispatcher: unicorn
+[02/17/11 09:00:57 +1030 dkim-macbook (14726)] INFO : Application: My Application
+[02/17/11 09:00:57 +1030 dkim-macbook (14726)] WARN : Agent configured not to send data in this environment - edit newrelic.yml to change this
+[02/17/11 09:00:57 +1030 dkim-macbook (14726)] INFO : New Relic RPM Agent 2.13.4 Initialized: pid = 14726
+[02/17/11 09:00:57 +1030 dkim-macbook (14726)] INFO : Agent Log found in /Users/david/.vim/plugin/log/newrelic_agent.log
