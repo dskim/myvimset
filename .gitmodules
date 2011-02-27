@@ -31,3 +31,6 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/scmdiff"]
+	path = bundle/scmdiff
+	url = https://github.com/ghewgill/vim-scmdiff.git
