@@ -37,9 +37,11 @@ set directory=~/.vim/tmp/ "for .swp files
 
 " Show status bar always
 set laststatus=2 
+
 "set statusline=%<%F%=\ [%M%R%H%Y]\ (%(%l,%c%))
 "set statusline=%F%m%r%h%w%=%{getcwd()}\ [%L][%{&ff}]%y[%p%%][%04l,%04v]
 "set statusline=%F%m%r%h%w%=\ [%L][%{&ff}]%y[%p%%][%04l,%04v]
+
 set showcmd
 set showmode
 set ruler
@@ -49,16 +51,26 @@ set wildmenu
 set wildmode=list:longest,full
 
 "My custom key maps
-map <F2> :FufQuickfix <CR>
-map <F3> :FufBuffer <CR>
+nnoremap <F2> :FufQuickfix <CR>
+nnoremap <F3> :FufBuffer <CR>
 " <C-]> Will delete selected buffer
-map <F4> :FufFile <CR>
-map <F5> :FufCoverageFile <CR>
-map <F6> :FufBookmarkDir <CR>
 
+nnoremap <F4> :FufFile <CR>
+nnoremap <F5> :FufCoverageFile <CR>
+nnoremap <F6> :FufBookmarkDir <CR>
+nnoremap <F7> :NERDTreeToggle <CR>
 nnoremap <F8> :TlistToggle <CR>
 
+nnoremap <Leader>f :FufCoverageFile <CR>
+
+nnoremap <Leader>rm :Rmodel <CR>
+nnoremap <Leader>rv :Rview <CR>
+nnoremap <Leader>rc :Rcontroller <CR>
+nnoremap <Leader>rf :Rfind <CR>
+nnoremap <Leader>rg :Rmigration
+
 " Centering search result on the screen
-nmap n nzz
-nmap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
+
 
