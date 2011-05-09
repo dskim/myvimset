@@ -1,6 +1,6 @@
 Installation:
 
-    git clone git://github.com/dskim/myvimset.git
+    git clone git://github.com/dskim/myvimset.git .vim
 
 Create symlinks:
 
