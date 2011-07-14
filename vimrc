@@ -14,6 +14,7 @@ set shiftwidth=2
 set autoindent
 set smartindent
 
+set paste "Stops putting  extra tab when pasting text
 set hidden " Hides buffers instead of forcing to save it before change it to other file
 
 set incsearch "interative searching
@@ -38,7 +39,7 @@ set directory=~/.vim/tmp/ "for .swp files
 " Show status bar always
 set laststatus=2 
 
-"set statusline=%<%F%=\ [%M%R%H%Y]\ (%(%l,%c%))
+set statusline=%<%F%=\ [%M%R%H%Y]\ (%(%l,%c%))[%p%%]
 "set statusline=%F%m%r%h%w%=%{getcwd()}\ [%L][%{&ff}]%y[%p%%][%04l,%04v]
 "set statusline=%F%m%r%h%w%=\ [%L][%{&ff}]%y[%p%%][%04l,%04v]
 
@@ -53,8 +54,8 @@ set wildmode=list:longest,full
 "My custom key maps
 nnoremap <F2> :FufQuickfix <CR>
 nnoremap <F3> :FufBuffer <CR>
-" <C-]> Will delete selected buffer
 
+" <C-]> Will delete selected buffer
 nnoremap <F4> :FufFile <CR>
 nnoremap <F5> :FufCoverageFile <CR>
 nnoremap <F6> :FufBookmarkDir <CR>
@@ -72,5 +73,9 @@ nnoremap <Leader>rg :Rmigration
 " Centering search result on the screen
 nnoremap n nzz
 nnoremap N Nzz
+
+" Map jj to escape from insert mode 
+" Otherwise just use Ctrl-c 
+imap jj <Esc>
 
 
