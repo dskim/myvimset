@@ -78,4 +78,9 @@ nnoremap N Nzz
 " Otherwise just use Ctrl-c 
 imap jj <Esc>
 
+" Map Tabularize
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>at :Tabularize /\|<CR>
+vmap <Leader>at :Tabularize /\|<CR>
 
