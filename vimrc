@@ -96,7 +96,7 @@ set ch=2
 
 " When the page starts to scroll, keep the cursor 8 lines from
 " the top and 8 lines from the bottom
-set scrolloff=8
+"set scrolloff=8
 
 " Keep some stuff in the history
 set history=100
@@ -119,6 +119,11 @@ set foldcolumn=2
 "Enhanced and sane auto completion setting
 set wildmenu
 set wildmode=list:longest,full
+
+" This line will make Vim set out tab characters, trailing whitespace and invisible spaces visually,
+" and additionally use the # sign at the end of lines to mark lines that extend off-screen. For more info, see :h listchars.
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 "My custom key maps
 nnoremap <F2> :FufQuickfix <CR>
