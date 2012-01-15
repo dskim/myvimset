@@ -1,8 +1,32 @@
 " Initializing pathogen for bundling other plugins
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc() 
+
+" original repos on github
+Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround.git'
+Bundle 'mileszs/ack.vim.git'
+Bundle 'scrooloose/nerdtree.git'
+Bundle 'scrooloose/nerdcommenter.git'
+Bundle 'edsono/vim-matchit.git'
+Bundle 'msanders/snipmate.vim.git'
+Bundle 'godlygeek/tabular.git'
+Bundle 'Lokaltog/vim-powerline.git'
+Bundle 'kien/ctrlp.vim.git'
+
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+
+filetype plugin indent on     " required! 
 
 set nocompatible
+
+let g:ctrlp_working_path_mode = 0
 
 syntax on
 
@@ -63,9 +87,9 @@ set laststatus=2
 set ch=2
 
 " Set the status line the way I like it
-set statusline=%f\ [%M%R%H%Y]\ %r\ %{fugitive#statusline()}\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
+"set statusline=%f\ [%M%R%H%Y]\ %r\ %{fugitive#statusline()}\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
 
-set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+"set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 " Allow the cursor to go in to "invalid" places
 "set virtualedit=all
