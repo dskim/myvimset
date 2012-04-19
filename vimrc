@@ -1,9 +1,10 @@
 " Initializing pathogen for bundling other plugins
 
+let mapleader = ","
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc() 
+call vundle#rc()
 
 " original repos on github
 Bundle 'tpope/vim-rails.git'
@@ -18,11 +19,7 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'kien/ctrlp.vim.git'
 
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-
-filetype plugin indent on     " required! 
+filetype plugin indent on     " required!
 
 set nocompatible
 
@@ -55,9 +52,9 @@ set lazyredraw
 set incsearch "interative searching
 set hlsearch "hilighting candidates
 
-set visualbell 
+set visualbell
 
-set background=dark 
+set background=dark
 
 colorscheme xoria256_mod
 
@@ -81,7 +78,7 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/tmp/ "for .swp files
 
 " Show status bar always
-set laststatus=2 
+set laststatus=2
 
 " Make command line two lines high
 set ch=2
@@ -125,18 +122,8 @@ set wildmode=list:longest,full
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
-"My custom key maps
-nnoremap <F2> :FufQuickfix <CR>
-nnoremap <F3> :FufBuffer <CR>
-
-" <C-]> Will delete selected buffer
-nnoremap <F4> :FufFile <CR>
-nnoremap <F5> :FufCoverageFile <CR>
-nnoremap <F6> :FufBookmarkDir <CR>
-nnoremap <F7> :NERDTreeToggle <CR>
-nnoremap <F8> :TlistToggle <CR>
-
-nnoremap <silent> sl :FufCoverageFile <CR>
+nnoremap <Leader>nt :NERDTree <CR>
+nnoremap <Leader>nf :NERDTreeFind <CR>
 
 nnoremap <silent> sm :Rmodel <CR>
 nnoremap <silent> sv :Rview <CR>
@@ -148,8 +135,8 @@ nnoremap <silent> sg :Rmigration <CR>
 nnoremap n nzz
 nnoremap N Nzz
 
-" Map jj and kk to escape from insert mode 
-" Otherwise just use Ctrl-c 
+" Map jj and kk to escape from insert mode
+" Otherwise just use Ctrl-c
 imap jj <Esc>
 imap kk <Esc>
 
@@ -177,4 +164,4 @@ if has("gui_running")
   set lines=40 columns=140
 endif
 
-"set spell " Turn Spellcheck on
+"set spell " Turn Spellcheck  on
