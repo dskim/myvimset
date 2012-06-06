@@ -143,8 +143,10 @@ imap kk <Esc>
 " Map Tabularize
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>at :Tabularize /\|<CR>
-vmap <Leader>at :Tabularize /\|<CR>
+nmap <Leader>ta :Tabularize /\|<CR>
+vmap <Leader>ta :Tabularize /\|<CR>
+nmap <Leader>th :Tabularize /\w:\zs/l0l1<CR>
+vmap <Leader>th :Tabularize /\w:\zs/l0l1<CR>
 
 " Jump to a tag on new tab
 nmap <C-Enter> <C-w><C-]><C-w>T
