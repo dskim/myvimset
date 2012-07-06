@@ -18,6 +18,7 @@ Bundle 'msanders/snipmate.vim.git'
 Bundle 'godlygeek/tabular.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'kien/ctrlp.vim.git'
+Bundle 'altercation/vim-colors-solarized.git'
 
 filetype plugin indent on     " required!
 
@@ -56,7 +57,7 @@ set visualbell
 
 set background=dark
 
-colorscheme xoria256_mod
+colorscheme solarized
 
 "Add recently accessed projects menu (project pluginó)
 set viminfo^=!
@@ -113,6 +114,8 @@ set foldmethod=manual
 set foldlevel=99
 set foldcolumn=2
 
+" Auto save files when focus is lost
+
 "Enhanced and sane auto completion setting
 set wildmenu
 set wildmode=list:longest,full
@@ -153,17 +156,5 @@ nmap <C-Enter> <C-w><C-]><C-w>T
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-
-" GUI OPTIONS
-if has("gui_running")
-  "set noantialias
-  "set guifont=Inconsolata:h12
-  set guifont=Monaco:h14
-  set fuoptions=maxvert,maxhorz "Allow MacVim take FULL screen
-  set transparency=5
-  set guioptions=egmt
-  set macmeta "Use option key as Meta key
-  set lines=40 columns=140
-endif
 
 "set spell " Turn Spellcheck  on
