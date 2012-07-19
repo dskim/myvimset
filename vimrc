@@ -19,6 +19,7 @@ Bundle 'godlygeek/tabular.git'
 Bundle 'Lokaltog/vim-powerline.git'
 Bundle 'kien/ctrlp.vim.git'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'widox/vim-buffer-explorer-plugin'
 
 filetype plugin indent on     " required!
 
@@ -144,10 +145,10 @@ imap jj <Esc>
 imap kk <Esc>
 
 " Map Tabularize
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>ta :Tabularize /\|<CR>
-vmap <Leader>ta :Tabularize /\|<CR>
+nmap <Leader>t= :Tabularize /=<CR>
+vmap <Leader>t= :Tabularize /=<CR>
+nmap <Leader>tb :Tabularize /\|<CR>
+vmap <Leader>tb :Tabularize /\|<CR>
 nmap <Leader>th :Tabularize /\w:\zs/l0l1<CR>
 vmap <Leader>th :Tabularize /\w:\zs/l0l1<CR>
 
