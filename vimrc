@@ -111,7 +111,7 @@ set foldenable
 
 " It seems to be better as it supports folding for pretty much any text that
 " has reasonable indent
-set foldmethod=manual
+set foldmethod=syntax
 
 " I don't want automatic folds so set it to high
 set foldlevel=99
