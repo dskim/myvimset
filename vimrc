@@ -22,6 +22,7 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'widox/vim-buffer-explorer-plugin'
 Bundle 'ervandew/supertab.git'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'slim-template/vim-slim.git'
 
 filetype plugin indent on     " required!
 
