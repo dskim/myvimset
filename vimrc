@@ -24,17 +24,14 @@ Bundle 'ervandew/supertab.git'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'slim-template/vim-slim.git'
 
+syntax on
+
 filetype plugin indent on     " required!
 
 set nocompatible
 
 let g:ctrlp_working_path_mode = 0
 
-syntax on
-
-filetype on
-filetype indent on
-filetype plugin on
 
 set cursorline " Highlights the line where the cursor is on
 
