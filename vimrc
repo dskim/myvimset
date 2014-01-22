@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " original repos on github
+Bundle 'vim-ruby/vim-ruby.git'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround.git'
@@ -32,6 +33,7 @@ set nocompatible
 
 let g:ctrlp_working_path_mode = 0
 
+set clipboard=unnamed
 
 set cursorline " Highlights the line where the cursor is on
 
@@ -83,7 +85,7 @@ set directory=~/.vim/tmp/ "for .swp files
 set laststatus=2
 
 " Make command line two lines high
-set ch=2
+"set ch=2
 
 " Set the status line the way I like it
 "set statusline=%f\ [%M%R%H%Y]\ %r\ %{fugitive#statusline()}\ Line:\ %l/%L[%p%%]\ Col:\ %c\ Buf:\ #%n\ [%b][0x%B]
@@ -113,7 +115,7 @@ set foldmethod=syntax
 
 " I don't want automatic folds so set it to high
 set foldlevel=99
-set foldcolumn=2
+set foldcolumn=1
 
 " Auto save files when focus is lost
 
@@ -159,6 +161,8 @@ nmap <C-Enter> <C-w><C-]><C-w>T
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 "set spell " Turn Spellcheck  on
+
+set mouse=a
 
 " GUI OPTIONS
 if has("gui_running")
