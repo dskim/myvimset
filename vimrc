@@ -24,6 +24,7 @@ Bundle 'widox/vim-buffer-explorer-plugin'
 Bundle 'ervandew/supertab.git'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'slim-template/vim-slim.git'
+Bundle 'vim-scripts/YankRing.vim.git'
 
 syntax on
 
@@ -32,6 +33,9 @@ filetype plugin indent on     " required!
 set nocompatible
 
 let g:ctrlp_working_path_mode = 0
+
+let g:yankring_replace_n_pkey = '<C-k>'
+let g:yankring_replace_n_nkey = '<C-j>'
 
 set clipboard=unnamed
 
@@ -128,8 +132,11 @@ set wildmode=list:longest,full
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+nnoremap <C-h> :NERDTree <CR>
 nnoremap <Leader>nt :NERDTree <CR>
 nnoremap <Leader>nf :NERDTreeFind <CR>
+
+nnoremap <Leader>sr :YRShow <CR>
 
 nnoremap <silent> sm :Rmodel <CR>
 nnoremap <silent> sv :Rview <CR>
