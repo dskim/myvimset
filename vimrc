@@ -135,7 +135,7 @@ set wildmode=list:longest,full
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
-nnoremap <C-h> :NERDTree <CR>
+nnoremap <C-h> :NERDTreeToggle <CR>
 nnoremap <Leader>nt :NERDTree <CR>
 nnoremap <Leader>nf :NERDTreeFind <CR>
 
