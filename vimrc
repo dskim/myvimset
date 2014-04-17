@@ -42,7 +42,7 @@ let g:yankring_replace_n_nkey = '<C-j>'
 
 set clipboard=unnamed
 
-set cursorline " Highlights the line where the cursor is on
+set cursorline cursorcolumn " Highlights the line where the cursor is on
 
 set number "display line numbers
 
@@ -146,10 +146,6 @@ nnoremap <silent> sv :Rview <CR>
 nnoremap <silent> sc :Rcontroller <CR>
 nnoremap <silent> sf :Rfind <CR>
 nnoremap <silent> sg :Rmigration <CR>
-
-" Centering search result on the screen
-nnoremap n nzz
-nnoremap N Nzz
 
 " Map jj and kk to escape from insert mode
 " Otherwise just use Ctrl-c
