@@ -28,6 +28,7 @@ Plugin 'ervandew/supertab.git'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'vim-scripts/YankRing.vim.git'
+Plugin 'thoughtbot/vim-rspec'
 
 syntax on
 
@@ -134,6 +135,16 @@ set wildmode=list:longest,full
 " and additionally use the # sign at the end of lines to mark lines that extend off-screen. For more info, see :h listchars.
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+set backspace=indent,eol,start
+
+let g:rspec_command = "!zeus test {spec}"
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 nnoremap <C-h> :NERDTreeToggle <CR>
 nnoremap <Leader>nt :NERDTree <CR>
