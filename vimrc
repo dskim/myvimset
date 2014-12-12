@@ -1,6 +1,8 @@
 " Initializing pathogen for bundling other plugins
 
 let mapleader = ","
+
+set nocompatible
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
@@ -14,7 +16,7 @@ Plugin 'vim-ruby/vim-ruby.git'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
-Plugin 'mileszs/ack.vim.git'
+Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'edsono/vim-matchit.git'
@@ -34,8 +36,8 @@ syntax on
 
 filetype plugin indent on     " required!
 
-set nocompatible
-
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:100'
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 0
 
 let g:yankring_replace_n_pkey = '<C-k>'
@@ -138,7 +140,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set backspace=indent,eol,start
 
-let g:rspec_command = "!zeus test {spec}"
+let g:rspec_command = "!rspec {spec}"
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
