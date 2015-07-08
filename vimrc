@@ -182,16 +182,3 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 "set spell " Turn Spellcheck  on
 
 set mouse=a
-
-" GUI OPTIONS
-if has("gui_running")
-  "set noantialias
-  "set guifont=Inconsolata:h12
-  set guifont=Monaco:h14
-  set fuoptions=maxvert,maxhorz "Allow MacVim take FULL screen
-  set transparency=5
-  set guioptions=egmt
-  set macmeta "Use option key as Meta key
-  set lines=40 columns=140
-endif
-
