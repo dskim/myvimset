@@ -36,9 +36,11 @@ syntax on
 
 filetype plugin indent on     " required!
 
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:100'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:50'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth = 40
 
 let g:yankring_replace_n_pkey = '<C-k>'
 let g:yankring_replace_n_nkey = '<C-j>'
