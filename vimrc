@@ -170,8 +170,8 @@ nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>
 nmap <Leader>tb :Tabularize /\|<CR>
 vmap <Leader>tb :Tabularize /\|<CR>
-nmap <Leader>th :Tabularize /\w:\zs/l0l1<CR>
-vmap <Leader>th :Tabularize /\w:\zs/l0l1<CR>
+nmap <Leader>th :Tabularize /^[^=>]*\zs=>/l1<CR>
+nmap <Leader>th :Tabularize /^[^=>]*\zs=>/l1<CR>
 
 " Jump to a tag on new tab
 nmap <C-Enter> <C-w><C-]><C-w>T
