@@ -30,7 +30,9 @@ Plugin 'ervandew/supertab.git'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'vim-scripts/YankRing.vim.git'
-Plugin 'thoughtbot/vim-rspec'
+"Plugin 'thoughtbot/vim-rspec'
+Plugin 'jgdavey/vim-turbux'
+Plugin 'benmills/vimux'
 
 syntax on
 
@@ -142,10 +144,14 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set backspace=indent,eol,start
 
-let g:rspec_command = "!rspec {spec}"
+"let g:rspec_command = "!zeus rspec {spec}"
+
+let g:turbux_runner  = 'vim'      " default: vimux OR tslime OR vim
+let g:turbux_command_prefix = 'zeus'
+let g:turbux_command_rspec = 'test -f d'
+let g:turbux_command_cucumber = 'cucumber'
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
