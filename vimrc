@@ -2,31 +2,31 @@
 
 let mapleader = ","
 
+syntax on
 set nocompatible
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.Vim'
 
 " original repos on github
 Plugin 'vim-ruby/vim-ruby.git'
+Plugin 'tpope/vim-vinegar.git'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree.git'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'edsono/vim-matchit.git'
-Plugin 'msanders/snipmate.vim.git'
 Plugin 'godlygeek/tabular.git'
-Plugin 'Lokaltog/vim-powerline.git'
+Plugin 'itchyny/lightline.vim'
 Plugin 'kien/ctrlp.vim.git'
+Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'widox/vim-buffer-explorer-plugin'
-Plugin 'ervandew/supertab.git'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'vim-scripts/YankRing.vim.git'
@@ -34,9 +34,9 @@ Plugin 'vim-scripts/YankRing.vim.git'
 Plugin 'jgdavey/vim-turbux'
 Plugin 'benmills/vimux'
 
-syntax on
-
-filetype plugin indent on     " required!
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:50'
 let g:ctrlp_show_hidden = 1
@@ -44,8 +44,44 @@ let g:ctrlp_working_path_mode = ''
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth = 40
 
+" Improve ctrlp index and match performance
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
 let g:yankring_replace_n_pkey = '<C-k>'
 let g:yankring_replace_n_nkey = '<C-j>'
+
+let g:lightline = {
+      \ }
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'component': {
+      \   'lineinfo': ' %3l:%-2v',
+      \ },
+      \ 'component_function': {
+      \   'readonly': 'LightLineReadonly',
+      \   'fugitive': 'LightLineFugitive'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+function! LightLineReadonly()
+  return &readonly ? '' : ''
+endfunction
+function! LightLineFugitive()
+  if exists('*fugitive#head')
+    let _ = fugitive#head()
+    return strlen(_) ? ''._ : ''
+  endif
+  return ''
+endfunction
 
 set clipboard=unnamed
 
