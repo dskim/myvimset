@@ -33,6 +33,8 @@ Plugin 'vim-scripts/YankRing.vim.git'
 "Plugin 'thoughtbot/vim-rspec'
 Plugin 'jgdavey/vim-turbux'
 Plugin 'benmills/vimux'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'rizzatti/dash.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,34 +56,21 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore "**/*.pyc"
       \ -g ""'
 
+let g:ag_highlight=1
+
 let g:yankring_replace_n_pkey = '<C-k>'
 let g:yankring_replace_n_nkey = '<C-j>'
 
 let g:lightline = {
-      \ }
-
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'component': {
-      \   'lineinfo': ' %3l:%-2v',
-      \ },
       \ 'component_function': {
-      \   'readonly': 'LightLineReadonly',
-      \   'fugitive': 'LightLineFugitive'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \   'filename': 'LightLineFilename'
       \ }
-function! LightLineReadonly()
-  return &readonly ? '' : ''
+      \ }
+function! LightLineFilename()
+  return expand('%')
 endfunction
-function! LightLineFugitive()
-  if exists('*fugitive#head')
-    let _ = fugitive#head()
-    return strlen(_) ? ''._ : ''
-  endif
-  return ''
-endfunction
+
+let g:tmuxline_preset = 'full'
 
 set clipboard=unnamed
 
@@ -191,10 +180,6 @@ let g:turbux_command_cucumber = 'cucumber'
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
-nnoremap <C-h> :NERDTreeToggle <CR>
-nnoremap <Leader>nt :NERDTree <CR>
-nnoremap <Leader>nf :NERDTreeFind <CR>
 
 nnoremap <Leader>sr :YRShow <CR>
 
