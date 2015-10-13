@@ -62,12 +62,26 @@ let g:yankring_replace_n_pkey = '<C-k>'
 let g:yankring_replace_n_nkey = '<C-j>'
 
 let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
       \ 'component_function': {
-      \   'filename': 'LightLineFilename'
+      \   'filename': 'LightLineFilename',
+      \   'fugitive': 'LightLineFugitive'
       \ }
       \ }
+
 function! LightLineFilename()
   return expand('%')
+endfunction
+
+function! LightLineFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? ' '._ : ''
+  endif
+  return ''
 endfunction
 
 let g:tmuxline_preset = 'full'
