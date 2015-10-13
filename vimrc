@@ -86,6 +86,7 @@ endfunction
 
 let g:tmuxline_preset = 'full'
 
+set iskeyword+=-
 set clipboard=unnamed
 
 set cursorline cursorcolumn " Highlights the line where the cursor is on
