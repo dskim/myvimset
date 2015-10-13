@@ -64,11 +64,12 @@ let g:yankring_replace_n_nkey = '<C-j>'
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
+      \             [ 'fugitive', 'readonly', 'filename' ] ]
       \ },
       \ 'component_function': {
       \   'filename': 'LightLineFilename',
-      \   'fugitive': 'LightLineFugitive'
+      \   'fugitive': 'LightLineFugitive',
+      \   'readonly': 'LightLineReadonly'
       \ }
       \ }
 
@@ -82,6 +83,16 @@ function! LightLineFugitive()
     return strlen(_) ? ' '._ : ''
   endif
   return ''
+endfunction
+
+function! LightLineReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return ""
+  else
+    return ""
+  endif
 endfunction
 
 let g:tmuxline_preset = 'full'
