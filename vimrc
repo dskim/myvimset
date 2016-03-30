@@ -176,7 +176,7 @@ set foldenable
 
 " It seems to be better as it supports folding for pretty much any text that
 " has reasonable indent
-set foldmethod=syntax
+set foldmethod=indent
 
 " I don't want automatic folds so set it to high
 set foldlevel=99
@@ -198,8 +198,8 @@ set backspace=indent,eol,start
 "let g:rspec_command = "!zeus rspec {spec}"
 
 let g:turbux_runner  = 'vim'      " default: vimux OR tslime OR vim
-let g:turbux_command_prefix = 'zeus'
-let g:turbux_command_rspec = 'test -f d'
+"let g:turbux_command_prefix = 'zeus'
+let g:turbux_command_rspec = 'rspec -f d'
 let g:turbux_command_cucumber = 'cucumber'
 
 " RSpec.vim mappings
@@ -234,6 +234,6 @@ nmap <C-Enter> <C-w><C-]><C-w>T
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-"set spell " Turn Spellcheck  on
+set spell " Turn Spellcheck  on
 
 set mouse=a
