@@ -23,18 +23,24 @@ Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'edsono/vim-matchit.git'
 Plugin 'godlygeek/tabular.git'
 Plugin 'itchyny/lightline.vim'
-Plugin 'kien/ctrlp.vim.git'
-Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'ctrlpvim/ctrlp.vim.git'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'widox/vim-buffer-explorer-plugin'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'vim-scripts/YankRing.vim.git'
-"Plugin 'thoughtbot/vim-rspec'
 Plugin 'jgdavey/vim-turbux'
 Plugin 'benmills/vimux'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'mhinz/vim-mix-format'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'c-brenn/phoenix.vim'
+Plugin 'tpope/vim-projectionist' " required for some navigation features
+Plugin 'elmcast/elm-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,7 +53,7 @@ let g:ctrlp_max_files=0
 let g:ctrlp_max_depth = 40
 
 " Improve ctrlp index and match performance
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
@@ -97,10 +103,15 @@ endfunction
 
 let g:tmuxline_preset = 'full'
 
+let g:jsx_ext_required = 0
+
+let g:mix_format_on_save = 1
+let g:mix_format_options = '--check-equivalent'
+
 set iskeyword+=-
 set clipboard=unnamed
 
-set cursorline cursorcolumn " Highlights the line where the cursor is on
+"set cursorline cursorcolumn " Highlights the line where the cursor is on
 
 set number "display line numbers
 
@@ -199,7 +210,8 @@ set backspace=indent,eol,start
 
 let g:turbux_runner  = 'vim'      " default: vimux OR tslime OR vim
 "let g:turbux_command_prefix = 'zeus'
-let g:turbux_command_rspec = 'rspec -f d'
+"let g:turbux_command_rspec = 'docker-compose exec web bundle exec rspec -f d'
+let g:turbux_command_rspec = 'bundle exec rspec -f d'
 let g:turbux_command_cucumber = 'cucumber'
 
 " RSpec.vim mappings
@@ -220,6 +232,9 @@ nnoremap <silent> sg :Rmigration <CR>
 imap jj <Esc>
 imap kk <Esc>
 
+" XML file formatting
+nmap <Leader>xl :%! xmllint --format -<CR>
+
 " Map Tabularize
 nmap <Leader>t= :Tabularize /=<CR>
 vmap <Leader>t= :Tabularize /=<CR>
@@ -237,3 +252,9 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 set spell " Turn Spellcheck  on
 
 set mouse=a
+
+"NeoVim handles ESC keys as alt+key, set this to solve the problem
+if has('nvim')
+  set ttimeout
+  set ttimeoutlen=0
+endif
