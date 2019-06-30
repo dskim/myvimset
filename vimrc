@@ -20,7 +20,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround.git'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'edsono/vim-matchit.git'
+Plugin 'vim-scripts/matchit.zip'
 Plugin 'godlygeek/tabular.git'
 Plugin 'itchyny/lightline.vim'
 Plugin 'ctrlpvim/ctrlp.vim.git'
@@ -28,7 +28,6 @@ Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'widox/vim-buffer-explorer-plugin'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'slim-template/vim-slim.git'
-Plugin 'vim-scripts/YankRing.vim.git'
 Plugin 'jgdavey/vim-turbux'
 Plugin 'benmills/vimux'
 Plugin 'edkolev/tmuxline.vim'
@@ -36,7 +35,7 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'elixir-editors/vim-elixir'
-Plugin 'mhinz/vim-mix-format'
+"Plugin 'mhinz/vim-mix-format'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'c-brenn/phoenix.vim'
 Plugin 'tpope/vim-projectionist' " required for some navigation features
@@ -46,26 +45,32 @@ Plugin 'elmcast/elm-vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:50'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = ''
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_use_caching = 0
 let g:ctrlp_max_files=0
-let g:ctrlp_max_depth = 40
+let g:ctrlp_max_depth = 10
+let g:ctrlp_switch_buffer = 'Et'
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_match_current_file = 1
 
 " Improve ctrlp index and match performance
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
       \ --ignore .hg
+      \ --ignore .csv
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
 
-let g:ag_highlight=1
+let g:ctrlp_custom_ignore = {
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ }
 
-let g:yankring_replace_n_pkey = '<C-k>'
-let g:yankring_replace_n_nkey = '<C-j>'
+let g:ag_highlight=1
 
 let g:lightline = {
       \ 'active': {
@@ -105,8 +110,8 @@ let g:tmuxline_preset = 'full'
 
 let g:jsx_ext_required = 0
 
-let g:mix_format_on_save = 1
-let g:mix_format_options = '--check-equivalent'
+"let g:mix_format_on_save = 1
+"let g:mix_format_options = '--check-equivalent'
 
 set iskeyword+=-
 set clipboard=unnamed
