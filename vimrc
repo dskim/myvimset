@@ -2,48 +2,42 @@
 
 let mapleader = ","
 
-syntax on
 set nocompatible
-filetype off                   " required!
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.Vim'
-
+call plug#begin('~/.vim/plugged')
 " original repos on github
-Plugin 'vim-ruby/vim-ruby.git'
-Plugin 'tpope/vim-vinegar.git'
-Plugin 'tpope/vim-rails.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround.git'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'godlygeek/tabular.git'
-Plugin 'itchyny/lightline.vim'
-Plugin 'ctrlpvim/ctrlp.vim.git'
-Plugin 'altercation/vim-colors-solarized.git'
-Plugin 'widox/vim-buffer-explorer-plugin'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'slim-template/vim-slim.git'
-Plugin 'jgdavey/vim-turbux'
-Plugin 'benmills/vimux'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'elixir-editors/vim-elixir'
-"Plugin 'mhinz/vim-mix-format'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'c-brenn/phoenix.vim'
-Plugin 'tpope/vim-projectionist' " required for some navigation features
-Plugin 'elmcast/elm-vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'rking/ag.vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/matchit.zip'
+Plug 'godlygeek/tabular'
+Plug 'itchyny/lightline.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'widox/vim-buffer-explorer-plugin'
+Plug 'kchmck/vim-coffee-script'
+Plug 'slim-template/vim-slim'
+Plug 'jgdavey/vim-turbux'
+Plug 'benmills/vimux'
+Plug 'edkolev/tmuxline.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'elixir-editors/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist' " required for some navigation features
+Plug 'elmcast/elm-vim'
+Plug '/usr/local/opt/fzf'
+"Plug 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_show_hidden = 1
@@ -56,21 +50,17 @@ let g:ctrlp_lazy_update = 1
 let g:ctrlp_match_current_file = 1
 
 " Improve ctrlp index and match performance
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .csv
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-
+let g:ctrlp_user_command = 'rg %s --files --color=never --hidden --glob ""'
 let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
       \ 'file': '\v\.(exe|so|dll)$',
       \ }
 
+let g:ag_prg = 'ag --nogroup --hidden --vimgrep'
 let g:ag_highlight=1
+
+let g:rg_command='rg --hidden --vimgrep'
+let g:rg_highlight=1
 
 let g:lightline = {
       \ 'active': {
