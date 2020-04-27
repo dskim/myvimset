@@ -1,1 +1,9 @@
-README
+Installation:
+
+    git clone git://github.com/dskim/myvimset.git ~/.vim
+
+Create symlinks:
+
+    ln -s ~/.vim/vimrc ~/.vimrc
+
+Run vim and execute :BundleInstall to have bundled plugins installed
