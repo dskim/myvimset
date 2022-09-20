@@ -40,6 +40,15 @@ call plug#end()
 command! -bang -nargs=* Rg2
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 
+function! s:get_search()
+  let search = getreg('/')
+  "" translate vim regular expression to perl regular expression.
+  return "'".substitute(search,'\(\\<\|\\>\)','\\b','g')."'"
+endfunction
+
+command! -bang -nargs=* RgFrom
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".s:get_search().<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
