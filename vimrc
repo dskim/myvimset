@@ -29,6 +29,8 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'wellle/context.vim'
+Plug 'airblade/vim-gitgutter'
+
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
@@ -99,6 +101,9 @@ function! LightLineReadonly()
 endfunction
 
 let g:tmuxline_preset = 'full'
+
+let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_highlight_lines = 1
 
 set iskeyword+=-
 set clipboard=unnamed
