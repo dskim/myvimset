@@ -11,6 +11,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-projectionist' " required for some navigation features
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/matchit.zip'
 Plug 'godlygeek/tabular'
@@ -23,7 +24,6 @@ Plug 'benmills/vimux'
 Plug 'edkolev/tmuxline.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-projectionist' " required for some navigation features
 Plug '/usr/local/opt/fzf'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -49,7 +49,7 @@ function! s:get_search()
 endfunction
 
 command! -bang -nargs=* RgFrom
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".s:get_search().<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".s:get_search()." ".<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
