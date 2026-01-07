@@ -1,35 +1,38 @@
 " Initializing pathogen for bundling other plugins
-
 let mapleader = ","
 
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
+
 " original repos on github
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-projectionist' " required for some navigation features
-Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/matchit.zip'
-Plug 'godlygeek/tabular'
-Plug 'itchyny/lightline.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'widox/vim-buffer-explorer-plugin'
-Plug 'slim-template/vim-slim'
-Plug 'jgdavey/vim-turbux'
-Plug 'benmills/vimux'
-Plug 'edkolev/tmuxline.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'pangloss/vim-javascript'
-Plug '/usr/local/opt/fzf'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-vinegar'
+Plug 'thoughtbot/vim-rspec'
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/matchit.zip'
+Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
+Plug 'widox/vim-buffer-explorer-plugin'
+Plug 'itchyny/lightline.vim'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'wellle/context.vim'
+Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
+Plug 'https://gitlab.com/gitlab-org/editor-extensions/gitlab.vim.git'
+"Plug 'wellle/context.vim'
+"Plug 'slim-template/vim-slim'
+"Plug 'jgdavey/vim-turbux'
+"Plug 'benmills/vimux'
+"Plug 'edkolev/tmuxline.vim'
+"Plug 'rizzatti/dash.vim'
+"Plug 'pangloss/vim-javascript'
 
 
 if has('nvim')
@@ -39,8 +42,16 @@ endif
 " All of your Plugins must be added before the following line
 call plug#end()
 
+syntax enable
+colorscheme solarized8
+set background=dark
+" Workaround a problem with solarized and vim-gitgutter.
+" https://github.com/airblade/vim-gitgutter/issues/696
+highlight! link SignColumn LineNr
+autocmd ColorScheme * highlight! link SignColumn LineNr
+
 command! -bang -nargs=* Rg2
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always ".<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 
 function! s:get_search()
   let search = getreg('/')
@@ -49,7 +60,7 @@ function! s:get_search()
 endfunction
 
 command! -bang -nargs=* RgFrom
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".s:get_search()." ".<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always ".s:get_search()." ".<q-args>, 1, fzf#vim#with_preview({'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}), <bang>0)
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
@@ -100,10 +111,7 @@ function! LightLineReadonly()
   endif
 endfunction
 
-let g:tmuxline_preset = 'full'
-
 let g:gitgutter_highlight_linenrs = 1
-let g:gitgutter_highlight_lines = 1
 
 set iskeyword+=-
 set clipboard=unnamed
@@ -131,10 +139,6 @@ set hlsearch "hilighting candidates
 
 set visualbell
 
-set background=dark
-
-colorscheme solarized
-
 "Add recently accessed projects menu (project pluginó)
 set viminfo^=!
 
@@ -151,8 +155,8 @@ set showfulltag
 let g:rails_default_file='config/database.yml'
 
 " Changes default directories for saving swap files and backup files 
-set backupdir=~/.vim/backup/
-set directory=~/.vim/tmp/ "for .swp files
+"set backupdir=~/.vim/backup/
+"set directory=~/.vim/tmp/ "for .swp files
 
 " Show status bar always
 set laststatus=2
@@ -198,10 +202,8 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set backspace=indent,eol,start
 
-let g:turbux_runner  = 'vim'      " default: vimux OR tslime OR vim
-let g:turbux_command_rspec = 'bundle exec rspec -f d'
-
 " RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
@@ -223,15 +225,38 @@ imap kk <Esc>
 nmap <Leader>xl :%! xmllint --format -<CR>
 
 " Map Tabularize
-nmap <Leader>t= :Tabularize /=<CR>
-nmap <Leader>tb :Tabularize /\|<CR>
-nmap <Leader>th :Tabularize /^[^=>]*\zs=>/l1<CR>
+if exists(":Tabularize")
+  nmap <Leader>t= :Tabularize /=<CR>
+  nmap <Leader>tb :Tabularize /\|<CR>
+  nmap <Leader>th :Tabularize /^[^=>]*\zs=>/l1<CR>
+endif
 
 " Jump to a tag on new tab
 nmap <C-Enter> <C-w><C-]><C-w>T
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 
 set spell " Turn Spellcheck  on
 
@@ -243,3 +268,23 @@ if has('nvim')
   set ttimeoutlen=0
 endif
 
+lua << EOF
+  require('gitlab').setup({
+    code_suggestions = {
+      auto_filetypes = {'ruby'},
+      ghost_text = {
+        enabled = true,
+        toggle_enabled = '<C-h>',
+        accept_suggestion = '<C-l>',
+        clear_suggestions = '<C-k>',
+        stream = true,
+      },
+    },
+    resource_editing = {
+      enabled = true,
+    },
+    statusline = {
+      enabled = false,
+    },
+  })
+EOF
